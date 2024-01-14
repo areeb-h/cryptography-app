@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="page h-[calc(100vh-74px)] w-screen flex flex-col space-y-4">
+    <div class="space-y-4 w-96 p-4 rounded-[25px] bg-slate-100 shadow">
+        <h1 class=" text-center text-lg font-bold">Verify your credit card number!</h1>
+        <form class="bg-white p-4 flex flex-col space-y-4 rounded-2xl w-full border" action="{{ url_for('card_check.card_check_page_post') }}" method="POST">
+            <div class="border bg-slate-50 rounded-lg p-3 flex flex-col space-y-2">
+                <label for="credit_card">Credit Card Number</label>
+                <input
+                        class="rounded-md px-3 py-1.5 border"
+                        type="text"
+                        id="credit_card"
+                        value="{{ credit_card_number }}"
+                        name="credit_card_number"
+                        pattern="[0-9]{16}"
+                        title="Please enter 16 digit number (without any spaces and '-')!"
+                        required
+                />
+            </div>
+            <div class="flex space-x-4">
+                <button class="bg-teal-600 font-bold hover:bg-teal-500 text-white rounded-lg p-2 w-8/12" type="submit">Submit</button>
+                <button class="bg-slate-700 font-bold hover:bg-slate-600 text-white rounded-lg p-2 w-5/12" type="button" onclick="clearInput()">Clear</button>
+            </div>
+        </form>
+        {% if message != None  %}
+            <h1 id="message" {% if is_valid %} class="msg-green" {% else %} class="msg-red" {% endif %}>{{ message }}</h1>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+
+    function clearInput() {
+        document.getElementById('credit_card').value = '';
+        document.getElementById('message').style.display = 'None';
+    }
+
+    // Hiding the message when the input is changed
+    const creditCardInput = document.getElementById('credit_card');
+    const message = document.getElementById('message');
+
+    creditCardInput.addEventListener('input', () => {
+        message.style.display = 'none';
+    });
+
+</script>
+
+{% endblock %}
+
+<!--pattern="[0-9\s]{16}"-->

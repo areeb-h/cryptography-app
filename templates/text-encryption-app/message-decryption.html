@@ -1,0 +1,49 @@
+{% extends 'text-encryption-app/layout.html' %}
+
+{% block sub %}
+
+        <form  class="bg-white mb-8 mx-8 p-8 rounded-2xl /h-[calc(100vh-190px)] flex flex-col space-y-[30px] shadow" action="{{ url_for('text_decryption.text_decryption_post') }}" method="POST">
+        <div class="flex flex-col space-y-[30px] h-full">
+                <div class="flex space-x-[30px] relative w-full min-w-[200px]">
+                    <div class="w-5/12 h-fit bg-slate-100/50 px-2 pt-2 pb-0.5 rounded-xl shadow">
+                        <label for="ciphertext" class="text-slate-800 px-2">
+                            Encrypted Message
+                        </label>
+                        <textarea type="text"
+                                class="text-base mt-2 h-full min-h-[150px] w-full resize-none rounded-[7px] border border-blue-gray-200 bg-white p-4 font-sans text-sm font-normal text-slate-700 focus:border-2 focus:border-cyan-700/50 focus:outline-0"
+                               id="ciphertext"
+                               name="ciphertext"
+                               readonly
+                        >{{ ciphertext }}</textarea>
+                    </div>
+
+                    <div class="w-5/12 h-fit bg-slate-100/50 px-2 pt-2 pb-0.5 rounded-xl shadow">
+                        <label for="message1" class="text-slate-800 px-2">
+                            Normal Message
+                        </label>
+                        <textarea type="text"
+                               class="text-base mt-2 h-full min-h-[150px] w-full resize-none rounded-[7px] border border-blue-gray-200 bg-white p-4 font-sans text-sm font-normal text-slate-700 focus:border-2 focus:border-cyan-700/50 focus:outline-0"
+                               id="message1"
+                               name="message1"
+                               readonly
+                        >{{ message1 }}</textarea>
+                    </div>
+
+                    <button class="bg-teal-600 w-2/12 /h-full font-bold hover:bg-teal-500 text-white rounded-lg p-2" type="submit"
+                    {% if decrypted != None %} disabled {% endif %}>Decrypt</button>
+                </div>
+
+            </div>
+
+            <div class="relative bg-green-500/20 w-full min-w-[200px] px-2 pt-2 pb-0.5 rounded-xl shadow">
+                <div class="bg-green-500/20 text-green-800 rounded-lg px-2 py-1.5">Decrypted Message</div>
+                <textarea
+                        class="text-base mt-2 h-full min-h-[150px] w-full resize-none rounded-[7px] border border-blue-gray-200 bg-white p-4 font-sans text-sm font-normal text-slate-700 focus:border-2 focus:border-cyan-700/50 focus:outline-0"
+                        placeholder=""
+                        id="decrypted"
+                        name="decrypted"
+                        readonly
+                >{% if decrypted != None %} {{ decrypted }} {% else %} {% endif %}</textarea>
+            </div>
+    </form>
+{% endblock %}

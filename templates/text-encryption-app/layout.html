@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="flex w-full items-center justify-center p-4">
+    <div class="tabs">
+        <a href="/text-encrypt" {% if request.path == '/text-encrypt' %} class="tab active" {% else %} class="tab" {% endif %}>Encrypt</a>
+        <a href="/text-decrypt" {% if request.path == '/text-decrypt' %} class="tab active" {% else %} class="tab disabled" {% endif %}>Decrypt</a>
+    </div>
+</div>
+
+{% block sub %}
+{% endblock %}
+
+{% endblock %}

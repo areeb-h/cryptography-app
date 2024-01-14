@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+<body class="bg-green-300 h-screen">
+<nav>
+    <div class="nav-container">
+        <h1>logo</h1>
+        <div class="links">
+            <a href="/" {% if request.path == '/' %} class="active" {% endif %}>Home</a>
+            <a href="/card-check" {% if request.path == '/card-check' %} class="active"{% endif %}>Card</a>
+        </div>
+    </div>
+</nav>
+{% block main %}
+{% endblock %}
+</body>
+</html>

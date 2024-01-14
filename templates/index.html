@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="page h-[calc(100vh-74px)] w-screen">
+    <div class="pages-card-border mx-auto">
+
+        <div class="pages-card ">
+            <a href="/card-check">
+                <span class="gradient-1 text-white">01</span>
+                <span>Card Number Verification</span>
+            </a>
+            <a href="/password-cracking">
+                <span class="gradient-1 text-white">02</span>
+                <span>Hamming Code Correcting</span>
+            </a>
+            <a href="/hamming-code">
+                <span class="gradient-1 text-white">03</span>
+                <span>Brute Force Password Cracking</span>
+            </a>
+            <a href="/text-encryption">
+                <span class="gradient-1 text-white">04</span>
+                <span>Text Encryption Application</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

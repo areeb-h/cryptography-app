@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="page h-[calc(100vh-74px)] flex flex-col space-y-4">
+    <div class="space-y-4 min-w-[450px] p-4 rounded-[25px] bg-slate-100 shadow">
+        <h1 class="text-center text-lg font-bold">Hamming Code Error Correction</h1>
+        <form id="set1_form" class="bg-white p-4 flex flex-col space-y-4 rounded-2xl w-full border" action="{{ url_for('hamming_code.hamming_code_post') }}" method="POST">
+            <div class="border bg-slate-50 rounded-lg p-3 flex flex-col space-y-2">
+                <label for="hamming_code">Hamming Code</label>
+                <input
+                        class="rounded-md px-3 py-1.5 border"
+                        type="text"
+                        id="hamming_code"
+                        name="hamming_code"
+                        value="{{ hamming_code }}"
+                        pattern="[0-1]{7}"
+                        title="Please enter a 7 bit hamming code (0-1)!"
+                        required
+                />
+                <label for="parity_bit">Select parity bit</label>
+                <select class="rounded-md px-3 py-1.5 border" id="parity_bit" name="parity_bit" required>
+                    <option value="odd" {% if parity_bit == "odd" %}selected{% endif %}>Odd</option>
+                    <option value="even" {% if parity_bit == "even" %}selected{% endif %}>Even</option>
+                </select>
+            </div>
+            <div class="flex space-x-4">
+                <button class="bg-teal-600 font-bold hover:bg-teal-500 text-white rounded-lg p-2 w-8/12" type="submit">Submit</button>
+                <button class="bg-slate-700 font-bold hover:bg-slate-600 text-white rounded-lg p-2 w-5/12" type="button" onclick="clearInput()">Clear</button>
+            </div>
+        </form>
+        {% if header and not message %}
+            <div id="table" class="p-4 rounded-2xl bg-white shadow overflow-hidden">
+                <table class="table-auto">
+                    <thead class="border-b">
+                        <tr class="font-bold">
+                        {% for i, cell in header | enumerate %}
+                            {% if i == 0 %}
+                                <td class="p-2 border-r">{{ cell }}</td>
+                            {% else %}
+                                <td class="p-2 text-center">{{ cell }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <tr class="border-b">
+                            {% for i, cell in error_row | enumerate %}
+                                {% if i == 0 %}
+                                    <td class="p-2 border-r">{{ cell }}</td>
+                                {% elif i == position %}
+                                    <td class="p-2 text-center text-red-500">{{ cell }}</td>
+                                {% else %}
+                                    <td class="p-2 text-center">{{ cell }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for i, cell in corrected_row | enumerate %}
+                                {% if i == 0 %}
+                                    <td class="p-2 border-r">{{ cell }}</td>
+                                {% elif i == position %}
+                                    <td class="p-2 text-center text-green-500">{{ cell }}</td>
+                                {% else %}
+                                    <td class="p-2 text-center">{{ cell }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+        {% if message %}
+          <h1 id="message" class="msg-green">{{ message }}</h1>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+
+    function clearInput() {
+        document.getElementById('hamming_code').value = '';
+        document.getElementById('table').style.display = 'None';
+        document.getElementById('message').style.display = 'None';
+    }
+
+</script>
+
+<style>
+/* Add this CSS style for the error-bit class */
+.error-bit {
+    color: red;
+}
+</style>
+
+{% endblock %}

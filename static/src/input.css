@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*** NAVBAR ***/
+nav {
+    @apply flex justify-center bg-white border
+}
+
+.nav-container {
+    @apply flex px-6 py-3 justify-between items-center max-w-screen-2xl w-full
+}
+
+nav .logo {
+    @apply text-xl font-bold
+}
+
+nav .links {
+    @apply flex space-x-2 p-2 rounded-2xl bg-slate-50
+}
+
+nav .links .link {
+    @apply px-3 py-1 text-slate-700 rounded-xl hover:bg-slate-100 hover:text-slate-900
+}
+
+nav .links .app-link {
+    @apply p-1 pl-3 text-white bg-gradient-to-tl from-cyan-500 to-teal-500 rounded-xl hover:bg-gradient-to-tl hover:from-cyan-700 hover:to-teal-700
+}
+
+nav .links .active {
+    @apply bg-slate-200 text-slate-900 hover:bg-slate-200
+}
+
+nav .links .app-active {
+    @apply bg-gradient-to-tl from-cyan-700 to-teal-700 hover:bg-gradient-to-tl hover:from-cyan-700 hover:to-teal-700
+}
+
+.btn-logout {
+    @apply text-center px-4 py-2 bg-orange-500 text-white rounded-2xl hover:bg-orange-600
+}
+/*** END NAVBAR ***/
+
+body {
+    @apply bg-slate-50
+}
+
+.page {
+    @apply flex justify-center items-center
+}
+
+/*** INDEX.HTML ***/
+
+.pages-card-border {
+    @apply p-1 bg-gradient-to-tl from-cyan-500 via-sky-600 to-teal-500 rounded-2xl
+}
+
+.pages-card {
+    @apply p-8 text-slate-700 font-bold bg-white grid grid-rows-2 grid-flow-col gap-8 rounded-xl border hover:bg-white/90 ease-in-out duration-200
+}
+
+.pages-card a {
+    @apply w-[18rem] p-4 flex items-center overflow-hidden rounded-xl bg-white border border-transparent bg-slate-50 hover:border-teal-800/20 ease-in-out duration-200
+}
+
+.pages-card span {
+    @apply p-4 rounded-xl
+}
+
+.gradient-1 {
+    @apply bg-gradient-to-tl from-cyan-600 via-sky-600 to-teal-600
+}
+/*** END INDEX.HTML ***/
+
+.msg-green {
+    @apply rounded-xl bg-green-200 text-green-700 py-2 px-4 text-center border border-green-500
+}
+
+.msg-red {
+    @apply rounded-xl bg-red-200 text-red-700 py-2 px-4 text-center border border-red-500
+}
+
+.tabs {
+    @apply flex rounded-2xl p-2 bg-white shadow space-x-2
+}
+
+.tabs .tab {
+    @apply rounded-xl bg-slate-100/40 text-slate-700 py-1.5 px-3 text-center hover:bg-slate-200/40
+}
+
+.tabs .active {
+    @apply bg-slate-200/50 text-slate-800 hover:bg-slate-200/50
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <a class="px-3 py-1.5 rounded-lg bg-red-500/20 text-red-700/80" href="/">Cryptography</a>
+        <div class="links">
+            <a href="/card-check" {% if request.path == '/card-check' %} class="link active" {% else %} class="link" {% endif %}>Credit Card Check</a>
+            <a href="/password-cracking" {% if request.path == '/password-cracking' %} class="link active" {% else %} class="link" {% endif %}>Crack Passwords</a>
+            <a href="/hamming-code" {% if request.path == '/hamming-code' %} class="link active" {% else %} class="link" {% endif %}>Hamming Code Correction</a>
+            <a href="/text-encrypt" {% if request.path == '/text-encrypt' or request.path == '/text-decrypt' %} class="app-link app-active" {% else %} class="app-link" {% endif %}>Text Encryption<span class="bg-cyan-600 text-white rounded-lg px-2 py-0.5 ml-2">App</span></a>
+        </div>
+    </div>
+</nav>
+{% block main %}
+{% endblock %}
+</body>
+</html>

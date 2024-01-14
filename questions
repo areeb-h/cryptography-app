@@ -1,0 +1,28 @@
+2.	Programming Task Requirements
+
+2.1.	Task 1. Verifying credit card numbers. 				5 marks
+
+Your code should accept a 16-digit string and determine whether or not it is a valid credit card number.
+
+2.2.	Task 2. Hamming Code Correcting. 				25 marks
+
+Create an algorithm to detect and correct errors from 7 bit Hamming Codes.
+
+2.3.	Task 3. Brute Force Password Cracking. 				10 marks
+
+The brute force program should use the following two types of attacks:
+•	Set A - Any password which contains a maximum of four lower-case letters and/or numbers;
+•	Set B – Use a Dictionary attack to try and crack the password. You may use resources available online to create the Dictionary.
+
+2.4.	Task 4. A Text Encryption APP Using Stream Cipher and Steganography
+30 marks
+Do online research and write an App which provides the following two functions:
+
+1.	Encryption – Taking two input messages:
+•	‘message 1’, which is not going to be encrypted, and
+•	‘message 2’, which is a secret message needing encryption.
+The APP should encrypt ‘message 2’ using a stream cipher, then produce an output which should contains the original ‘message 1’ and the encrypted ‘message 2’ hidden within it.
+
+2.	Decryption – The APP reads a ‘ciphertext’ (a message output by the encryption algorithm), and recovers both messages from the ‘ciphertext’.
+
+In summary, this App is a combination of cryptography and steganography. It hides an encrypted message within an ordinary message. You are not allowed to use any existing crypto libraries or other open sources for this task apart from a pseudo random number generator for the stream cipher. To simplify the task, it is assumed that both sender and receiver have already obtained a shared key for their stream cipher.
